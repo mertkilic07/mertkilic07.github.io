@@ -84,8 +84,32 @@
     .links { display: flex; gap: 20px; margin-left: 8px; }
     .links a { font-size: 15px; color: var(--muted); text-underline-offset: 4px; }
     .links a:hover { color: var(--accent); }
-    .portrait { border-radius: 14px; overflow: hidden; aspect-ratio: 1 / 1.12; background: var(--accent-soft); }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+    .portrait {
+      width: 280px; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden;
+      background: var(--accent-soft); justify-self: end;
+      box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px var(--rule);
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+
+    /* Active nav item */
+    nav.primary a[aria-current="true"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 8px; }
+
+    /* Mobile menu */
+    .menu-btn { display: none; background: none; border: 1px solid var(--rule); border-radius: 8px; padding: 9px 14px; font: 500 15px/1 var(--sans); color: var(--ink); cursor: pointer; }
+    .menu-panel { display: none; }
+
+    /* Zoomable images */
+    .zoom { all: unset; cursor: zoom-in; display: flex; align-items: center; justify-content: center; max-height: 100%; }
+    .zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+    dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); max-height: 92vh; }
+    dialog.lightbox::backdrop { background: rgba(20, 32, 27, 0.82); }
+    dialog.lightbox img { max-width: 100%; max-height: 82vh; border-radius: 8px; background: #fff; margin: 0 auto; }
+    dialog.lightbox figcaption { color: #E3EEE8; text-align: center; font-size: 15px; margin-top: 12px; }
+    .lightbox-close { position: fixed; top: 18px; right: 18px; background: var(--paper); color: var(--ink); border: 0; border-radius: 8px; padding: 10px 14px; font: 500 15px/1 var(--sans); cursor: pointer; }
+
+    /* Toast */
+    .toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 8px; font-size: 15px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 50; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
     .trend { margin-top: 56px; height: 120px; width: 100%; }
     .trend path.line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -150,6 +174,7 @@
     .project-row .project { margin: 0; display: flex; flex-direction: column; }
     .project-row .project-media { height: 250px; padding: 20px; gap: 12px; }
     .project-row .project-media img { max-height: 100%; }
+    .project-row .zoom { height: 100%; }
     .media-light { background: #E9EDEA; }
     .more { display: inline-block; margin-top: 18px; font-weight: 500; color: var(--accent); text-underline-offset: 4px; }
 
@@ -169,8 +194,14 @@
     /* ── Responsive ─────────────────────────── */
     @media (max-width: 900px) {
       nav.primary { display: none; }
+      .menu-btn { display: inline-flex; }
+      .menu-panel { border-top: 1px solid var(--rule); background: var(--paper); }
+      .menu-panel.open { display: block; }
+      .menu-panel ul { list-style: none; margin-top: 0; margin-bottom: 0; padding-top: 8px; padding-bottom: 16px; }
+      .menu-panel a { display: block; padding: 12px 0; text-decoration: none; font-size: 17px; border-bottom: 1px solid var(--rule); }
+      .menu-panel li:last-child a { border-bottom: 0; }
       .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-      .portrait { max-width: 260px; }
+      .portrait { width: 200px; justify-self: start; order: -1; }
       .block-grid { grid-template-columns: 1fr; gap: 24px; }
       .block h2 { position: static; }
       .project-feature, .project-row { grid-template-columns: 1fr; }
@@ -207,7 +238,19 @@
       </ul>
     </nav>
     <a class="btn btn-line header-cv" href="assets/Mert_Can_Kilic_CV.pdf" download>Download CV</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">Menu</button>
   </div>
+  <nav class="menu-panel" id="menu-panel" aria-label="Sections">
+    <ul class="wrap">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="assets/Mert_Can_Kilic_CV.pdf" download>Download CV</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main>
@@ -305,15 +348,15 @@
             <a class="more" href="https://github.com/mertkilic07/Crypto-Price-Prediction" target="_blank" rel="noopener">See the analysis on GitHub</a>
           </div>
           <div class="project-media">
-            <img src="assets/crypto-correlation.png" alt="Correlation matrix of price, sentiment and attention indicators" loading="lazy" />
+            <button class="zoom" type="button" aria-label="Enlarge correlation matrix"><img src="assets/crypto-correlation.png" alt="Correlation matrix of price, sentiment and attention indicators" loading="lazy" /></button>
           </div>
         </article>
 
         <div class="project-row">
           <article class="project">
             <div class="project-media media-light">
-              <img src="assets/app-1.png" alt="Build Your Focus onboarding screen" loading="lazy" />
-              <img src="assets/app-3.png" alt="Build Your Focus session screen" loading="lazy" />
+              <button class="zoom" type="button" aria-label="Enlarge onboarding screen"><img src="assets/app-1.png" alt="Build Your Focus onboarding screen" loading="lazy" /></button>
+              <button class="zoom" type="button" aria-label="Enlarge focus session screen"><img src="assets/app-3.png" alt="Build Your Focus session screen" loading="lazy" /></button>
             </div>
             <div class="project-body">
               <h3>Build Your Focus</h3>
@@ -324,7 +367,7 @@
           </article>
           <article class="project">
             <div class="project-media">
-              <img src="assets/quiz-client.svg" alt="Quiz game client window" loading="lazy" />
+              <button class="zoom" type="button" aria-label="Enlarge quiz game client window"><img src="assets/quiz-client.svg" alt="Quiz game client window" loading="lazy" /></button>
             </div>
             <div class="project-body">
               <h3>Multiplayer real-time quiz game</h3>
@@ -404,6 +447,7 @@
       <p>I'm looking for data analytics and consulting opportunities. The quickest way to reach me is by email.</p>
       <div class="contact-list">
         <a class="btn btn-solid" href="mailto:kilicmerttt@gmail.com">kilicmerttt@gmail.com</a>
+        <button class="btn btn-line" type="button" id="copy-email" data-email="kilicmerttt@gmail.com">Copy email</button>
         <a class="btn btn-line" href="https://www.linkedin.com/in/mert-can-k%C4%B1l%C4%B1%C3%A7-026628398/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn btn-line" href="https://github.com/mertkilic07" target="_blank" rel="noopener">GitHub</a>
         <a class="btn btn-line" href="assets/Mert_Can_Kilic_CV.pdf" download>Download CV</a>
@@ -416,11 +460,70 @@
   <div class="wrap">© 2026 Mert Can Kılıç · Istanbul, Türkiye</div>
 </footer>
 
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+  <button class="lightbox-close" type="button" id="lightbox-close">Close</button>
+  <figure style="margin:0">
+    <img id="lightbox-img" src="" alt="" />
+    <figcaption id="lightbox-cap"></figcaption>
+  </figure>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
+  /* Header border on scroll */
   const header = document.querySelector('header.site');
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* Mobile menu */
+  const menuBtn = document.querySelector('.menu-btn');
+  const menuPanel = document.getElementById('menu-panel');
+  const setMenu = (open) => {
+    menuPanel.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  };
+  menuBtn.addEventListener('click', () => setMenu(!menuPanel.classList.contains('open')));
+  menuPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  /* Highlight the section in view */
+  const navLinks = [...document.querySelectorAll('nav.primary a')];
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(a => a.getAttribute('href') === '#' + entry.target.id
+        ? a.setAttribute('aria-current', 'true')
+        : a.removeAttribute('aria-current'));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+
+  /* Image lightbox */
+  const box = document.getElementById('lightbox');
+  const boxImg = document.getElementById('lightbox-img');
+  const boxCap = document.getElementById('lightbox-cap');
+  document.querySelectorAll('.zoom').forEach(btn => btn.addEventListener('click', () => {
+    const img = btn.querySelector('img');
+    boxImg.src = img.src; boxImg.alt = img.alt; boxCap.textContent = img.alt;
+    box.showModal();
+  }));
+  document.getElementById('lightbox-close').addEventListener('click', () => box.close());
+  box.addEventListener('click', e => { if (e.target === box) box.close(); });
+
+  /* Copy email */
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  const showToast = (msg) => {
+    toast.textContent = msg; toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  };
+  document.getElementById('copy-email').addEventListener('click', async (e) => {
+    const email = e.currentTarget.dataset.email;
+    try { await navigator.clipboard.writeText(email); showToast('Email copied: ' + email); }
+    catch { showToast('Copy failed. Email: ' + email); }
+  });
 </script>
 </body>
 </html>
