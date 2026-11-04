@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none">
+  <defs>
+    <linearGradient id="bull_fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bear_fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#e2e8f0" letter-spacing="1">BULL vs BEAR SENTIMENT</text>
+
+  <!-- Axes -->
+  <line x1="55" y1="35" x2="55" y2="200" stroke="#334155" stroke-width="1.5"/>
+  <line x1="55" y1="200" x2="385" y2="200" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Y gridlines -->
+  <line x1="55" y1="200" x2="385" y2="200" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+  <line x1="55" y1="167" x2="385" y2="167" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+  <line x1="55" y1="134" x2="385" y2="134" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+  <line x1="55" y1="101" x2="385" y2="101" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+  <line x1="55" y1="68"  x2="385" y2="68"  stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+  <line x1="55" y1="35"  x2="385" y2="35"  stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+
+  <!-- Y labels -->
+  <text x="48" y="203" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#64748b">0.0</text>
+  <text x="48" y="170" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#64748b">0.1</text>
+  <text x="48" y="137" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#64748b">0.2</text>
+  <text x="48" y="104" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#64748b">0.3</text>
+  <text x="48" y="71"  text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#64748b">0.4</text>
+  <text x="48" y="38"  text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#64748b">0.5</text>
+
+  <!-- X labels -->
+  <text x="55"  y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#64748b">Feb'21</text>
+  <text x="137" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#64748b">Aug'21</text>
+  <text x="220" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#64748b">Feb'22</text>
+  <text x="302" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#64748b">Aug'22</text>
+  <text x="385" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#64748b">Jan'23</text>
+
+  <!-- Bull ratio area fill (approx ~0.17 avg, spikes to 0.28) -->
+  <path d="M55,145 L82,138 L110,131 L137,125 L165,133 L192,120 L220,128 L247,135 L275,118 L302,130 L330,122 L357,127 L385,132 L385,200 L55,200 Z"
+        fill="url(#bull_fill)"/>
+
+  <!-- Bear ratio area fill (approx ~0.09 avg, spikes during drops) -->
+  <path d="M55,172 L82,169 L110,173 L137,165 L165,177 L192,163 L220,170 L247,167 L275,175 L302,162 L330,168 L357,164 L385,170 L385,200 L55,200 Z"
+        fill="url(#bear_fill)"/>
+
+  <!-- Bull line -->
+  <polyline points="55,145 82,138 110,131 137,125 165,133 192,120 220,128 247,135 275,118 302,130 330,122 357,127 385,132"
+            stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Bear line -->
+  <polyline points="55,172 82,169 110,173 137,165 165,177 192,163 220,170 247,167 275,175 302,162 330,168 357,164 385,170"
+            stroke="#f87171" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Dot highlights -->
+  <circle cx="275" cy="118" r="4" fill="#34d399" stroke="#0f172a" stroke-width="2"/>
+  <circle cx="302" cy="162" r="4" fill="#f87171" stroke="#0f172a" stroke-width="2"/>
+
+  <!-- Annotation: bull peak -->
+  <line x1="275" y1="118" x2="285" y2="98" stroke="#34d399" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
+  <text x="288" y="96" font-family="Inter,sans-serif" font-size="7.5" fill="#34d399" font-weight="600">Bull peak</text>
+
+  <!-- Legend -->
+  <line x1="115" y1="247" x2="135" y2="247" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="125" cy="247" r="3" fill="#34d399"/>
+  <text x="140" y="251" font-family="Inter,sans-serif" font-size="9" fill="#94a3b8">Bull Ratio</text>
+
+  <line x1="215" y1="247" x2="235" y2="247" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="225" cy="247" r="3" fill="#f87171"/>
+  <text x="240" y="251" font-family="Inter,sans-serif" font-size="9" fill="#94a3b8">Bear Ratio</text>
+</svg>

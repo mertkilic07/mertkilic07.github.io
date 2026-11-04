@@ -164,8 +164,23 @@
     .project-row .project { margin: 0; display: flex; flex-direction: column; }
     .project-row .project-media { height: 250px; padding: 20px; gap: 12px; }
     .project-row .project-media img { max-height: 100%; }
-    .project-row .zoom { height: 100%; }
     .media-light { background: #E9EDEA; }
+
+    /* Image carousels */
+    .project-media:has(.carousel) { padding: 20px 20px 14px; }
+    .project-feature .project-media { min-height: 420px; }
+    .carousel { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 12px; }
+    .carousel .slides { position: relative; flex: 1; min-height: 200px; touch-action: pan-y; }
+    .project-feature .carousel .slides { min-height: 360px; }
+    .carousel .slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .7s ease; pointer-events: none; }
+    .carousel .slide.active { opacity: 1; pointer-events: auto; z-index: 1; }
+    .carousel .slide img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 6px; }
+    .carousel .dots { display: flex; justify-content: center; gap: 8px; }
+    .carousel .dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,.3); cursor: pointer; transition: width .3s, background .3s; }
+    .carousel .dot.active { width: 22px; background: #5CC79F; }
+    .carousel-light .dot { background: rgba(20,32,27,.2); }
+    .carousel-light .dot.active { background: var(--accent); }
+    @media (prefers-reduced-motion: reduce) { .carousel .slide { transition: none; } }
     .more { display: inline-block; margin-top: 18px; font-weight: 500; color: var(--accent); text-underline-offset: 4px; }
 
     /* Skills */
@@ -345,15 +360,28 @@
             <a class="more" href="https://github.com/mertkilic07/Crypto-Price-Prediction" target="_blank" rel="noopener">See the analysis on GitHub</a>
           </div>
           <div class="project-media">
-            <button class="zoom" type="button" aria-label="Enlarge correlation matrix"><img src="assets/crypto-correlation.png" alt="Correlation matrix of price, sentiment and attention indicators" /></button>
+            <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Bitcoin project figures">
+              <div class="slides">
+                <button class="slide zoom active" type="button" aria-label="Enlarge: Correlation matrix of price, sentiment and attention indicators"><img src="assets/crypto-correlation.png" alt="Correlation matrix of price, sentiment and attention indicators" /></button>
+                <button class="slide zoom" type="button" aria-label="Enlarge: Model performance: Logistic Regression vs. Random Forest"><img src="assets/crypto-performance.svg" alt="Model performance: Logistic Regression vs. Random Forest" /></button>
+                <button class="slide zoom" type="button" aria-label="Enlarge: Bull vs. bear sentiment over time"><img src="assets/crypto-sentiment.svg" alt="Bull vs. bear sentiment over time" /></button>
+              </div>
+              <div class="dots"><button class="dot active" type="button" aria-label="Show image 1 of 3"></button><button class="dot" type="button" aria-label="Show image 2 of 3"></button><button class="dot" type="button" aria-label="Show image 3 of 3"></button></div>
+            </div>
           </div>
         </article>
 
         <div class="project-row reveal">
           <article class="project">
             <div class="project-media media-light">
-              <button class="zoom" type="button" aria-label="Enlarge onboarding screen"><img src="assets/app-1.png" alt="Build Your Focus onboarding screen" /></button>
-              <button class="zoom" type="button" aria-label="Enlarge focus session screen"><img src="assets/app-3.png" alt="Build Your Focus session screen" /></button>
+              <div class="carousel carousel-light" data-carousel aria-roledescription="carousel" aria-label="Build Your Focus screens">
+              <div class="slides">
+                <button class="slide zoom active" type="button" aria-label="Enlarge: Build Your Focus onboarding screen"><img src="assets/app-1.png" alt="Build Your Focus onboarding screen" /></button>
+                <button class="slide zoom" type="button" aria-label="Enlarge: Build Your Focus menu"><img src="assets/app-2.png" alt="Build Your Focus menu" /></button>
+                <button class="slide zoom" type="button" aria-label="Enlarge: Build Your Focus session screen"><img src="assets/app-3.png" alt="Build Your Focus session screen" /></button>
+              </div>
+              <div class="dots"><button class="dot active" type="button" aria-label="Show image 1 of 3"></button><button class="dot" type="button" aria-label="Show image 2 of 3"></button><button class="dot" type="button" aria-label="Show image 3 of 3"></button></div>
+            </div>
             </div>
             <div class="project-body">
               <h3>Build Your Focus</h3>
@@ -364,7 +392,14 @@
           </article>
           <article class="project">
             <div class="project-media">
-              <button class="zoom" type="button" aria-label="Enlarge quiz game client window"><img src="assets/quiz-client.svg" alt="Quiz game client window" /></button>
+              <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Quiz game screens">
+              <div class="slides">
+                <button class="slide zoom active" type="button" aria-label="Enlarge: Quiz game server dashboard"><img src="assets/quiz-server.svg" alt="Quiz game server dashboard" /></button>
+                <button class="slide zoom" type="button" aria-label="Enlarge: Quiz game client window"><img src="assets/quiz-client.svg" alt="Quiz game client window" /></button>
+                <button class="slide zoom" type="button" aria-label="Enlarge: Quiz game network architecture"><img src="assets/quiz-network.svg" alt="Quiz game network architecture" /></button>
+              </div>
+              <div class="dots"><button class="dot active" type="button" aria-label="Show image 1 of 3"></button><button class="dot" type="button" aria-label="Show image 2 of 3"></button><button class="dot" type="button" aria-label="Show image 3 of 3"></button></div>
+            </div>
             </div>
             <div class="project-body">
               <h3>Multiplayer real-time quiz game</h3>
@@ -515,11 +550,40 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
   document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
 
+  /* Image carousels: soft crossfade, auto-advance, dots and swipe */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-carousel]').forEach(car => {
+    const slides = [...car.querySelectorAll('.slide')];
+    const dots = [...car.querySelectorAll('.dot')];
+    let cur = 0, timer = null, startX = null;
+    const go = (i) => {
+      cur = (i + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('active', k === cur));
+      dots.forEach((d, k) => { d.classList.toggle('active', k === cur); d.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+    };
+    const start = () => { if (!reduceMotion) { stop(); timer = setInterval(() => go(cur + 1), 4000); } };
+    const stop = () => { clearInterval(timer); timer = null; };
+    dots.forEach((d, k) => d.addEventListener('click', () => { go(k); start(); }));
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    car.addEventListener('focusin', stop);
+    car.addEventListener('focusout', start);
+    const area = car.querySelector('.slides');
+    area.addEventListener('pointerdown', e => { startX = e.clientX; });
+    area.addEventListener('pointerup', e => {
+      if (startX === null) return;
+      const dx = e.clientX - startX; startX = null;
+      if (Math.abs(dx) > 40) { car.dataset.swiped = '1'; setTimeout(() => delete car.dataset.swiped, 0); go(cur + (dx < 0 ? 1 : -1)); start(); }
+    });
+    start();
+  });
+
   /* Image lightbox */
   const box = document.getElementById('lightbox');
   const boxImg = document.getElementById('lightbox-img');
   const boxCap = document.getElementById('lightbox-cap');
   document.querySelectorAll('.zoom').forEach(btn => btn.addEventListener('click', () => {
+    if (btn.closest('[data-carousel]')?.dataset.swiped) return;
     const img = btn.querySelector('img');
     boxImg.src = img.src; boxImg.alt = img.alt; boxCap.textContent = img.alt;
     box.showModal();

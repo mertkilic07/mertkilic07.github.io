@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none">
+  <!-- Background -->
+  <rect x="10" y="10" width="380" height="240" rx="10" fill="#1e2430" stroke="#334155" stroke-width="1.2"/>
+  <rect x="10" y="10" width="380" height="28" rx="10" fill="#252d3d"/>
+  <rect x="10" y="28" width="380" height="10" fill="#252d3d"/>
+  <circle cx="28" cy="24" r="5" fill="#ff5f57"/>
+  <circle cx="44" cy="24" r="5" fill="#febc2e"/>
+  <circle cx="60" cy="24" r="5" fill="#28c840"/>
+  <text x="200" y="27" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#94a3b8">Quiz Game — Network</text>
+
+  <!-- Server node (center) -->
+  <rect x="155" y="95" width="90" height="58" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="155" y="95" width="90" height="14" rx="8" fill="#1e3a5f"/>
+  <rect x="155" y="102" width="90" height="7" fill="#1e3a5f"/>
+  <circle cx="165" cy="102" r="3" fill="#ff5f57"/>
+  <circle cx="174" cy="102" r="3" fill="#febc2e"/>
+  <circle cx="183" cy="102" r="3" fill="#28c840"/>
+  <text x="200" y="102" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#94a3b8">SERVER</text>
+  <text x="200" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#60a5fa">Quiz Server</text>
+  <text x="200" y="128" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#64748b">port :5001</text>
+  <text x="200" y="139" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#34d399">● Active</text>
+  <text x="200" y="149" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#94a3b8">3 clients</text>
+
+  <!-- Client 1 — top left -->
+  <rect x="30" y="52" width="76" height="46" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <rect x="30" y="52" width="76" height="11" rx="6" fill="#1a2332"/>
+  <rect x="30" y="57" width="76" height="6" fill="#1a2332"/>
+  <circle cx="38" cy="57" r="2.5" fill="#ff5f57"/>
+  <circle cx="44" cy="57" r="2.5" fill="#febc2e"/>
+  <circle cx="50" cy="57" r="2.5" fill="#28c840"/>
+  <text x="68" y="57" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#64748b">CLIENT</text>
+  <text x="68" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="600" fill="#e2e8f0">mert</text>
+  <text x="68" y="80" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#34d399">● Connected</text>
+  <text x="68" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#fbbf24">Score: 3</text>
+
+  <!-- Client 2 — top right -->
+  <rect x="294" y="52" width="76" height="46" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <rect x="294" y="52" width="76" height="11" rx="6" fill="#1a2332"/>
+  <rect x="294" y="57" width="76" height="6" fill="#1a2332"/>
+  <circle cx="302" cy="57" r="2.5" fill="#ff5f57"/>
+  <circle cx="308" cy="57" r="2.5" fill="#febc2e"/>
+  <circle cx="314" cy="57" r="2.5" fill="#28c840"/>
+  <text x="332" y="57" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#64748b">CLIENT</text>
+  <text x="332" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="600" fill="#e2e8f0">alex</text>
+  <text x="332" y="80" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#34d399">● Connected</text>
+  <text x="332" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#94a3b8">Score: 2</text>
+
+  <!-- Client 3 — bottom center -->
+  <rect x="162" y="192" width="76" height="46" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <rect x="162" y="192" width="76" height="11" rx="6" fill="#1a2332"/>
+  <rect x="162" y="197" width="76" height="6" fill="#1a2332"/>
+  <circle cx="170" cy="197" r="2.5" fill="#ff5f57"/>
+  <circle cx="176" cy="197" r="2.5" fill="#febc2e"/>
+  <circle cx="182" cy="197" r="2.5" fill="#28c840"/>
+  <text x="200" y="197" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#64748b">CLIENT</text>
+  <text x="200" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="600" fill="#e2e8f0">sara</text>
+  <text x="200" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#34d399">● Connected</text>
+  <text x="200" y="230" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#94a3b8">Score: 1</text>
+
+  <!-- Connection lines -->
+  <!-- mert -> server -->
+  <line x1="106" y1="75" x2="155" y2="113" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+  <!-- alex -> server -->
+  <line x1="294" y1="75" x2="245" y2="113" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+  <!-- sara -> server -->
+  <line x1="200" y1="192" x2="200" y2="153" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+
+  <!-- Animated data packets (small circles on lines) -->
+  <circle cx="130" cy="94" r="3" fill="#60a5fa" opacity="0.9"/>
+  <circle cx="270" cy="94" r="3" fill="#60a5fa" opacity="0.9"/>
+  <circle cx="200" cy="172" r="3" fill="#60a5fa" opacity="0.9"/>
+
+  <!-- TCP label on lines -->
+  <text x="118" y="87" font-family="Inter,sans-serif" font-size="5.5" fill="#3b82f6" opacity="0.8">TCP</text>
+  <text x="258" y="87" font-family="Inter,sans-serif" font-size="5.5" fill="#3b82f6" opacity="0.8">TCP</text>
+  <text x="204" y="175" font-family="Inter,sans-serif" font-size="5.5" fill="#3b82f6" opacity="0.8">TCP</text>
+
+  <!-- Protocol legend bottom -->
+  <rect x="18" y="48" width="6" height="4" rx="1" fill="#3b82f6" opacity="0.7"/>
+  <text x="27" y="52" font-family="Inter,sans-serif" font-size="6" fill="#64748b">TCP Socket  ●  JSON Messages  ●  Length-prefixed framing</text>
+</svg>
