@@ -2,4 +2,4 @@
 
 Personal portfolio site: data analytics, projects, experience and education.
 
-Live site: https://mertkilic07.github.io/mertcankilic07.github.io/
+Live site: https://mertkilic07.github.io/
