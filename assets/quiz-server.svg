@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none">
+  <!-- Window -->
+  <rect x="10" y="10" width="380" height="240" rx="10" fill="#1e2430" stroke="#334155" stroke-width="1.2"/>
+  <rect x="10" y="10" width="380" height="28" rx="10" fill="#252d3d"/>
+  <rect x="10" y="28" width="380" height="10" fill="#252d3d"/>
+  <circle cx="28" cy="24" r="5" fill="#ff5f57"/>
+  <circle cx="44" cy="24" r="5" fill="#febc2e"/>
+  <circle cx="60" cy="24" r="5" fill="#28c840"/>
+  <text x="200" y="27" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#94a3b8">Quiz Game — Server</text>
+
+  <!-- Config bar -->
+  <rect x="18" y="46" width="364" height="26" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <text x="24" y="56" font-family="Inter,sans-serif" font-size="7" fill="#64748b" font-weight="600">SERVER CONFIG</text>
+  <text x="24" y="66" font-family="Inter,sans-serif" font-size="7.5" fill="#94a3b8">Port: <tspan fill="#60a5fa">5001</tspan>   File: <tspan fill="#60a5fa">question.txt</tspan>   Questions: <tspan fill="#60a5fa">5</tspan></text>
+  <rect x="308" y="50" width="66" height="14" rx="3" fill="#16a34a"/>
+  <text x="341" y="60" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#fff">● Server On</text>
+
+  <!-- Buttons -->
+  <rect x="18" y="78" width="70" height="16" rx="3" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="53" y="89" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#60a5fa">Start Server</text>
+  <rect x="96" y="78" width="64" height="16" rx="3" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+  <text x="128" y="89" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#4ade80">Start Game</text>
+
+  <!-- Players -->
+  <text x="18" y="106" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#94a3b8">CONNECTED PLAYERS</text>
+  <rect x="18" y="110" width="170" height="46" rx="4" fill="#080d14" stroke="#1e293b" stroke-width="1"/>
+  <text x="26" y="122" font-family="Inter,sans-serif" font-size="7.5" fill="#34d399">● mert</text>
+  <text x="26" y="134" font-family="Inter,sans-serif" font-size="7.5" fill="#34d399">● alex</text>
+  <text x="26" y="146" font-family="Inter,sans-serif" font-size="7.5" fill="#34d399">● sara</text>
+
+  <!-- Scoreboard -->
+  <text x="202" y="106" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#94a3b8">SCOREBOARD</text>
+  <rect x="202" y="110" width="180" height="46" rx="4" fill="#080d14" stroke="#1e293b" stroke-width="1"/>
+  <text x="210" y="122" font-family="Inter,sans-serif" font-size="7.5" fill="#fbbf24">🏆  mert: 3 pts</text>
+  <text x="210" y="134" font-family="Inter,sans-serif" font-size="7.5" fill="#94a3b8">2.  alex: 2 pts</text>
+  <text x="210" y="146" font-family="Inter,sans-serif" font-size="7.5" fill="#94a3b8">3.  sara: 1 pt</text>
+
+  <!-- Activity Log -->
+  <text x="18" y="168" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#94a3b8">ACTIVITY LOG</text>
+  <rect x="18" y="172" width="364" height="72" rx="4" fill="#080d14" stroke="#1e293b" stroke-width="1"/>
+  <text x="26" y="184" font-family="Inter,sans-serif" font-size="7" fill="#475569">[10:41:00] Server started! Listening on port 5001...</text>
+  <text x="26" y="195" font-family="Inter,sans-serif" font-size="7" fill="#475569">[10:41:12] Player connected: mert</text>
+  <text x="26" y="206" font-family="Inter,sans-serif" font-size="7" fill="#475569">[10:41:18] Player connected: alex</text>
+  <text x="26" y="217" font-family="Inter,sans-serif" font-size="7" fill="#475569">[10:41:25] Player connected: sara</text>
+  <text x="26" y="228" font-family="Inter,sans-serif" font-size="7" fill="#4ade80">[10:42:01] Game Started! Playing 5 questions.</text>
+  <text x="26" y="239" font-family="Inter,sans-serif" font-size="7" fill="#60a5fa">[10:42:45] Sending Question 3: What does TCP stand for?</text>
+</svg>
